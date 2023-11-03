@@ -16,30 +16,23 @@ public:
 	RigidBody() {
 		m_Mass = Mass;
 		m_Gravity = Gravity;
+		m_Acceleration = Vector2d(0, m_Gravity);
 	}
-	void ApplyForce(Vector2d F) { m_Force = F; }
-	void ApplyForceX(float F1){ m_Force.X = F1; }//When to bounce Vertically call ApplyForceX(-Fx) no need to do extra calculations
-	void ApplyForceY(float F2) { m_Force.Y = F2; }
 
-	void UnsetForce() { m_Force = Vector2d(0,0); }
-	
-	inline Vector2d GetPosition() { 
+	inline Vector2d GetPosition() {
 		//m_Position.Log();
 		//std:: cout << m_Position.X << "X , " << m_Position.Y << "Calculated position" <<std::endl;
 		return m_Position;
-		
+
 	}
 	inline Vector2d GetVelocity() { return m_Velocity; }
-	inline Vector2d GetAcceleration() { return m_Acceleration; }
-	inline void SetPosition(Vector2d P) { m_Position = P; }
-	inline void SetAcceleration(Vector2d A) { m_Acceleration = A; }
-	inline void SetVelocity(Vector2d V) { m_Velocity = V; }
+	inline void ApplyJumpVelocity(Vector2d v) { m_Velocity = v; }
+	inline void ApplyVelocity(float F) { m_Velocity.X = F; }
 
 	void Update(float dt) {
-		m_Acceleration.X = m_Force.X / m_Mass;
-		m_Acceleration.Y = (m_Force.Y) / m_Mass + m_Gravity;
-		m_Velocity = m_Acceleration;
-		m_Position = m_Velocity;
+		m_Position = m_Velocity * dt + m_Acceleration * dt * dt;
+		m_Velocity = m_Velocity + m_Acceleration * dt;
+		m_Position.Log();
 		//std::cout << m_Position.X << " , " << m_Position.Y << std::endl << dt << std::endl;
 	}
 };

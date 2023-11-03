@@ -1,5 +1,5 @@
 #pragma once
-#define Gravity 2
+#define Gravity 100
 #define Mass 5
 #define SHeight 720
 #define SWidth 1280
@@ -12,3 +12,7 @@
 #define DOWN 1
 #define Fy 20
 #define Fx 10
+#define J1 250
+#define J2 340
+#define J3 400
+#define J4 200
