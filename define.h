@@ -11,7 +11,7 @@
 #define UP -1
 #define DOWN 1
 #define Fy 20
-#define Fx 10
+#define Fx 200
 #define J1 250
 #define J2 340
 #define J3 400

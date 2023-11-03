@@ -32,7 +32,7 @@ public:
 	void Update(float dt) {
 		m_Position = m_Velocity * dt + m_Acceleration * dt * dt;
 		m_Velocity = m_Velocity + m_Acceleration * dt;
-		m_Position.Log();
+		//m_Position.Log();
 		//std::cout << m_Position.X << " , " << m_Position.Y << std::endl << dt << std::endl;
 	}
 };

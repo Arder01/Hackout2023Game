@@ -15,6 +15,7 @@ Player::Player(float x, float y, float w = PWidth, float h = PHeight) {
 }
 
 void Player::Update(float dt) {
+	m_Transform.Log();
 	static bool spacePressed = false;
 	static Uint32 SpaceUp = 0;
 	static Uint32 SpaceTime = 0;
@@ -93,12 +94,43 @@ void Player::Update(float dt) {
 		else if (!spacePressed and IsGrounded) {
 			if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A)) {
 				m_rigidbody->ApplyVelocity(Fx * (-1));
+				m_rigidbody->Update(dt);
+				SDL_Rect temp = PDrect;
+				temp.x += m_rigidbody->GetPosition().X;
+				if (!Collision::GetInstance()->CheckCollision(temp)) {
+					m_Transform.X += m_rigidbody->GetPosition().X;
+				}
 			}
 			else if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D)) {
 				m_rigidbody->ApplyVelocity(Fx);
+				m_rigidbody->Update(dt);
+				SDL_Rect temp = PDrect;
+				temp.x += m_rigidbody->GetPosition().X;
+				if (!Collision::GetInstance()->CheckCollision(temp)) {
+					m_Transform.X += m_rigidbody->GetPosition().X;
+				}
 			}
-			else m_rigidbody->ApplyVelocity(0);
-			m_rigidbody->Update(dt);
+			else {
+				m_rigidbody->ApplyVelocity(0);
+				m_rigidbody->Update(dt);
+			}
+			PDrect.x = m_Transform.X;
+			PDrect.y = m_Transform.Y;
+			if (PDrect.x <= 0)PDrect.x = 0;
+			if (PDrect.x > (SWidth - PDrect.w))	PDrect.x = SWidth - PDrect.w;
+			PDrect.y += m_rigidbody->GetPosition().Y;
+			if (PDrect.y <= 0)
+			{
+				PDrect.y = 0;
+				Vector2d vel = m_rigidbody->GetVelocity();
+				m_rigidbody->ApplyJumpVelocity(Vector2d(vel.X, vel.Y * (-1)));
+			}
+
+			if (PDrect.y > SHeight - PDrect.h)
+			{
+				PDrect.y = SHeight - PDrect.h;
+				IsGrounded = true;
+			}
 		}
 	}
 }

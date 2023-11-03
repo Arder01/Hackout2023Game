@@ -38,7 +38,7 @@ void Engine::Events()
 void Engine::Update() {
 	float dt = Timer::GetInstance()->GetDeltaTime();
 	MChar->Update(dt);
-	std::cout << dt << std::endl;
+	//std::cout << dt << std::endl;
 }
 void Engine::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 200, 50);
