@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Boxes>
+    <group x = "200" y = "100" w = "400" h = "200"/>
+    <group x = "100" y = "400" w = "100" h = "300"/>
+    <group x = "1000" y = "500" w = "100" h = "100"/>
+</Boxes>
