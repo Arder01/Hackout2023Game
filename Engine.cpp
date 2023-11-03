@@ -26,7 +26,7 @@ bool Engine::Init() {
 	if (Collision::GetInstance()->Load("Box","Assets/Collision/Collision.xml") == false) {//using load instead of Parse as parse requires id and source
 		std::cout << "Falied to extract Box dataset" << SDL_GetError() << std::endl;
 	}
-	MChar = new Player(400, 400, 56, 72);
+	MChar = new Player(10, 10, 56, 72);
 	if (MChar == nullptr) SDL_Log("Failed to create player pointer :%s", SDL_GetError());
 	return m_IsRunning = true;
 }

@@ -116,9 +116,17 @@ void Player::Update(float dt) {
 			}
 			PDrect.x = m_Transform.X;
 			PDrect.y = m_Transform.Y;
-			if (PDrect.x <= 0)PDrect.x = 0;
-			if (PDrect.x > (SWidth - PDrect.w))	PDrect.x = SWidth - PDrect.w;
-			PDrect.y += m_rigidbody->GetPosition().Y;
+			if (PDrect.x <= 0)
+			{
+				PDrect.x = 0;
+				m_Transform.X = 0;
+			}
+			if (PDrect.x > (SWidth - PDrect.w))
+			{
+				PDrect.x = SWidth - PDrect.w;
+				m_Transform.X = PDrect.x;
+			}
+			//PDrect.y += m_rigidbody->GetPosition().Y;
 			if (PDrect.y <= 0)
 			{
 				PDrect.y = 0;
@@ -131,6 +139,7 @@ void Player::Update(float dt) {
 				PDrect.y = SHeight - PDrect.h;
 				IsGrounded = true;
 			}
+			m_rigidbody->Update(dt);
 		}
 	}
 }
