@@ -12,6 +12,7 @@ Player::Player(float x, float y, float w = PWidth, float h = PHeight) {
 	m_Transform.X = x;
 	m_Transform.Y = y;
 	m_rigidbody = new RigidBody();
+	m_Animation = new SpriteAnimation();
 }
 
 void Player::Update(float dt) {
@@ -19,7 +20,14 @@ void Player::Update(float dt) {
 	static bool spacePressed = false;
 	static Uint32 SpaceUp = 0;
 	static Uint32 SpaceTime = 0;
-	if (IsGrounded) m_rigidbody->ApplyJumpVelocity(Vector2d(0, 0));
+	if (IsGrounded) 
+	{
+		m_rigidbody->ApplyJumpVelocity(Vector2d(0, 0));
+		m_Animation->SetProps("Player", 1, 4, 8, SDL_FLIP_NONE);
+	}
+	else {
+		m_Animation->SetProps("Player_Fly", 1, 15, 60, SDL_FLIP_NONE);
+	}
 	if (Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && IsGrounded) {
 		if (!spacePressed) {
 			spacePressed = true;
@@ -144,13 +152,14 @@ void Player::Update(float dt) {
 	}
 }
 void Player::Render() {
-	SDL_Surface* pimg = IMG_Load("Assets/Player/Player.png");
+	m_Animation->Draw(m_Transform.X, m_Transform.Y, PWidth, PHeight);
+	PSrect = { 0,0,PHeight,PWidth };
+	SDL_RenderDrawRect(Engine::GetInstance()->GetRender(), &PDrect);
+	/*SDL_Surface* pimg = IMG_Load("Assets/Player/Player.png");
 	if (pimg == NULL) {
 		SDL_Log("Error rendereing Player.png :%s", SDL_GetError());
 	}
 	SDL_Texture* playerTex = SDL_CreateTextureFromSurface(Engine::GetInstance()->GetRender(), pimg);
 	if (playerTex == NULL) SDL_Log("Error Converting png to texture :%s", SDL_GetError());
-	PSrect = { 0,0,PHeight,PWidth };
-	SDL_RenderDrawRect(Engine::GetInstance()->GetRender(), &PDrect);
-	SDL_RenderCopyEx(Engine::GetInstance()->GetRender(), playerTex, &PSrect, &PDrect, 0, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(Engine::GetInstance()->GetRender(), playerTex, &PSrect, &PDrect, 0, nullptr, SDL_FLIP_NONE);*/
 }

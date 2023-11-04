@@ -46,10 +46,10 @@ bool TextureManager::ParseTextures(std::string source)
 	return true;
 }
 
-void TextureManager::Draw(std::string id, int x, int y, int width, int height, float FlowRatio, SDL_RendererFlip flip)
+void TextureManager::Draw(std::string id, int x, int y, int width, int height, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect = { 0,0,width,height };
-	SDL_Rect dstRect = { x, y, width * 1, height * 1 };
+	SDL_Rect dstRect = { x, y, width, height};
 	SDL_RenderCopyEx(Engine::GetInstance()->GetRender(), m_TextureMap[id], &srcRect, &dstRect, 0, nullptr, flip);
 
 }
@@ -58,7 +58,7 @@ void TextureManager::DrawFrame(std::string id, int x, int y, int width, int heig
 {
 
 	SDL_Rect srcRect = { width * frame, height * (row - 1),width,height };
-	SDL_Rect dstRect = { x , y , width * 1.5, height * 1.5 };
+	SDL_Rect dstRect = { x , y , width, height};
 	SDL_RenderCopyEx(Engine::GetInstance()->GetRender(), m_TextureMap[id], &srcRect, &dstRect, 0, nullptr, flip);
 }
 

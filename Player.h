@@ -5,6 +5,7 @@
 #include "define.h"
 #include "Collision.h"
 #include "Vector2d.h"
+#include "SpriteAnimation.h"
 class Player
 {
 public:
@@ -15,6 +16,7 @@ public:
 	Player(float x, float y, float w, float h);
 public:
 	Vector2d m_Transform;
+	SpriteAnimation* m_Animation;
 	SDL_Rect PDrect, PSrect;
 	void Update(float dt);
 	void Render();

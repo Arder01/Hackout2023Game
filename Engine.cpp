@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Timer.h"
+#include "TextureManager.h"
 #include "Input.h"
 Engine* Engine::s_Instance = nullptr;
 Player* MChar = nullptr;
@@ -26,6 +27,7 @@ bool Engine::Init() {
 	if (Collision::GetInstance()->Load("Box","Assets/Collision/Collision.xml") == false) {//using load instead of Parse as parse requires id and source
 		std::cout << "Falied to extract Box dataset" << SDL_GetError() << std::endl;
 	}
+	TextureManager::GetInstance()->ParseTextures("Assets/Texture/Textures.tml");
 	MChar = new Player(10, 10, 56, 72);
 	if (MChar == nullptr) SDL_Log("Failed to create player pointer :%s", SDL_GetError());
 	return m_IsRunning = true;
@@ -50,6 +52,7 @@ void Engine::Render() {
 	SDL_Rect srcrect = { 0,0,256,96 };
 	SDL_Rect dstrect = { 200,200,256,96 };
 	SDL_RenderCopyEx(renderer, texture, &srcrect, &dstrect, 0, nullptr, SDL_FLIP_NONE);*/
+	TextureManager::GetInstance()->Draw("BG1", -75, 15, SWidth, SHeight);
 	Collision::GetInstance()->Render();
 	MChar->Render();
 	SDL_RenderPresent(renderer);

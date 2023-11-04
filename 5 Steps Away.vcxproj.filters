@@ -35,6 +35,9 @@
     <Filter Include="SRC\TextureManager">
       <UniqueIdentifier>{848b7afd-22ee-4b0b-911e-f77d32af982d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\Animation Manager">
+      <UniqueIdentifier>{1723068c-9d22-4f3b-8e38-2cc9628827d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -73,6 +76,9 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>SRC\TextureManager</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteAnimation.cpp">
+      <Filter>SRC\Animation Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -110,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>SRC\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimation.h">
+      <Filter>SRC\Animation Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>SRC\Animation Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,8 +3,8 @@
 #define Mass 5
 #define SHeight 720
 #define SWidth 1280
-#define PWidth 64
-#define PHeight 48
+#define PWidth 56
+#define PHeight 80
 #define MaxTime 3
 #define Forward -1
 #define Backward 1
@@ -12,7 +12,7 @@
 #define DOWN 1
 #define Fy 20
 #define Fx 200
-#define J1 250
-#define J2 340
-#define J3 400
-#define J4 200
+#define J1 230
+#define J2 280
+#define J3 330
+#define J4 250
