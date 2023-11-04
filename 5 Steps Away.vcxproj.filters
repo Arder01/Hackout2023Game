@@ -32,6 +32,9 @@
     <Filter Include="SRC\TinyXML">
       <UniqueIdentifier>{8567c8bf-559e-466e-8978-313dc524897e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SRC\TextureManager">
+      <UniqueIdentifier>{848b7afd-22ee-4b0b-911e-f77d32af982d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -67,6 +70,9 @@
     <ClCompile Include="Vendors\TinyXml\tinyxmlparser.cpp">
       <Filter>SRC\TinyXML</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>SRC\TextureManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -101,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="Vendors\TinyXml\tinyxml.h">
       <Filter>SRC\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>SRC\TextureManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

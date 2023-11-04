@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Textures>
+    <Textures id = "Player" source = "Assets/Knight/_Idle.png"/>
+    <Textures id = "Player_Run" source = "Assets/Knight/_Run.png"/>
+    <Textures id = "BG1" source = "Assets/Images/background1.png"/>
+</Textures>
